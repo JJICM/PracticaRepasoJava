@@ -1,30 +1,31 @@
 package practica.psp.dam.Controlador;
 
 import practica.psp.dam.Modelo.Alumnos;
-import practica.psp.dam.Modelo.AlumnosServicio;
+import practica.psp.dam.Modelo.ModeloInterfaz;
 import practica.psp.dam.Vista.AlumnosVista;
+import practica.psp.dam.Vista.VistaInterfaz;
 
 public class AlumnosControlador {
-    private AlumnosServicio alumnosServicio;
-    private AlumnosVista alumnosVista;
+    private ModeloInterfaz modeloInterfaz;
+    private VistaInterfaz vistaInterfaz;
 
-    public AlumnosControlador(AlumnosServicio alumnosServicio, AlumnosVista alumnosVista) {
-        this.alumnosServicio = alumnosServicio;
-        this.alumnosVista = alumnosVista;
+    public AlumnosControlador(ModeloInterfaz modeloInterfaz, VistaInterfaz vistaInterfaz) {
+        this.modeloInterfaz = modeloInterfaz;
+        this.vistaInterfaz = vistaInterfaz;
     }
 
     public void start() {
         boolean salir = false;
         while (!salir) {
-            switch (alumnosVista.opcionMenu()) {
+            switch (vistaInterfaz.opcionMenu()) {
                 case AlumnosVista.OPCION_CREAR_ALUMNO:
-                    String[] datos = alumnosVista.crearAlumnos();
-                    alumnosServicio.crearAlumnos(new Alumnos(datos[0], datos[1], Integer.parseInt(datos[2])));
+                    String[] datos = vistaInterfaz.crearAlumnos();
+                    modeloInterfaz.crearAlumnos(new Alumnos(datos[0], datos[1], Integer.parseInt(datos[2])));
                     break;
                 case AlumnosVista.OPCION_LISTAR_ALUMNO:
-                    for (Alumnos alumno : alumnosServicio.listarAlumnos()) {
+                    for (Alumnos alumno : modeloInterfaz.listarAlumnos()) {
                         String[] datosAlumno = {alumno.getNombre(), alumno.getApellidos(), Integer.toString(alumno.getEdad())};
-                        alumnosVista.listarAlumnos(datosAlumno);
+                        vistaInterfaz.listarAlumnos(datosAlumno);
                     }
                     break;
                 case AlumnosVista.OPCION_SALIR:
