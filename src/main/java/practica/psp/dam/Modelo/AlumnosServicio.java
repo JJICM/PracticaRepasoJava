@@ -3,7 +3,7 @@ package practica.psp.dam.Modelo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AlumnosServicio implements AlumnosInterfaz{
+public class AlumnosServicio implements ModeloInterfaz{
 
     private List<Alumnos> alumnos = new ArrayList<>();
 
@@ -14,7 +14,7 @@ public class AlumnosServicio implements AlumnosInterfaz{
 
     @Override
     public List<Alumnos> listarAlumnos() {
-        return alumnos;
+        return new ArrayList<>(alumnos);
     }
 
 }
