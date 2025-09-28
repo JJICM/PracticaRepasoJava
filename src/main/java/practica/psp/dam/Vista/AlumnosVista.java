@@ -4,12 +4,14 @@ import java.util.Scanner;
 
 public class AlumnosVista implements VistaInterfaz{
     
+    public static final int OPCION_CREAR_ALUMNO = 1;
+    public static final int OPCION_LISTAR_ALUMNO = 2;
+    public static final int OPCION_SALIR = 3;
+
+    private static final int ATRIBUTOS_ALUMNO = 3;
+
     @Override
     public int opcionMenu() {
-        final int OPCION_CREAR_ALUMNO = 1;
-        final int OPCION_LISTAR_ALUMNO = 2;
-        final int OPCION_SALIR = 3;
-
         String opciones = """
             %d - Crear alumno.
             %d - Listar alumno.
@@ -22,22 +24,12 @@ public class AlumnosVista implements VistaInterfaz{
         int opcion = Integer.parseInt(sc.nextLine());
         sc.close();
 
-        switch (opcion) {
-            case OPCION_CREAR_ALUMNO:
-                return OPCION_CREAR_ALUMNO;
-            case OPCION_LISTAR_ALUMNO:
-                return OPCION_LISTAR_ALUMNO;
-            case OPCION_SALIR:
-                return OPCION_SALIR;
-            default:
-                return 0;
-        }
+        return opcion;
     }
 
     @Override
     public String[] crearAlumnos() {
-        int atributosAlumno = 3;
-        String[] datosAlumno = new String[atributosAlumno];
+        String[] datosAlumno = new String[ATRIBUTOS_ALUMNO];
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Nombre del alumno: ");
@@ -57,8 +49,8 @@ public class AlumnosVista implements VistaInterfaz{
             ALUMNO
             Nombre: %s
             Apellidos: %s
-            Edad: %d
-            """;
+            Edad: %s
+            """.formatted(datos[1], datos[2], datos[3]);
         System.out.println(mostrarDatos);
     }
 }
