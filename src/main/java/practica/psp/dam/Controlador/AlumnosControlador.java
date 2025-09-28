@@ -23,7 +23,7 @@ public class AlumnosControlador {
                     break;
                 case AlumnosVista.OPCION_LISTAR_ALUMNO:
                     for (Alumnos alumno : alumnosServicio.listarAlumnos()) {
-                        String[] datosAlumno = new String[]{alumno.getNombre(), alumno.getApellidos(), Integer.toString(alumno.getEdad())};
+                        String[] datosAlumno = {alumno.getNombre(), alumno.getApellidos(), Integer.toString(alumno.getEdad())};
                         alumnosVista.listarAlumnos(datosAlumno);
                     }
                     break;

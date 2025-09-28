@@ -10,6 +10,8 @@ public class AlumnosVista implements VistaInterfaz{
 
     private static final int ATRIBUTOS_ALUMNO = 3;
 
+    private Scanner sc;
+
     @Override
     public int opcionMenu() {
         String opciones = """
@@ -20,9 +22,8 @@ public class AlumnosVista implements VistaInterfaz{
 
         System.out.println(opciones);
 
-        Scanner sc = new Scanner(System.in);
+        sc = new Scanner(System.in);
         int opcion = Integer.parseInt(sc.nextLine());
-        sc.close();
 
         return opcion;
     }
@@ -31,14 +32,13 @@ public class AlumnosVista implements VistaInterfaz{
     public String[] crearAlumnos() {
         String[] datosAlumno = new String[ATRIBUTOS_ALUMNO];
 
-        Scanner sc = new Scanner(System.in);
+        sc = new Scanner(System.in);
         System.out.println("Nombre del alumno: ");
         datosAlumno[0] = sc.nextLine();
         System.out.println("Apellidos del alumno: ");
         datosAlumno[1] = sc.nextLine();
         System.out.println("Edad del alumno: ");
         datosAlumno[2] = sc.nextLine();
-        sc.close();
 
         return datosAlumno;
     }
@@ -50,7 +50,7 @@ public class AlumnosVista implements VistaInterfaz{
             Nombre: %s
             Apellidos: %s
             Edad: %s
-            """.formatted(datos[1], datos[2], datos[3]);
+            """.formatted(datos[0], datos[1], datos[2]);
         System.out.println(mostrarDatos);
     }
 }
