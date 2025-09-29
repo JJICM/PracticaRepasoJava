@@ -45,10 +45,11 @@ public class AlumnosControladorTest {
         Mockito.when(vistaInterfaz.opcionMenu()).thenReturn(AlumnosVista.OPCION_LISTAR_ALUMNO, AlumnosVista.OPCION_SALIR);
         Mockito.when(modeloInterfaz.listarAlumnos()).thenReturn(List.of(new Alumnos("JJ", "Z", 19)));
         alumnosControlador.start();
-        verify(vistaInterfaz).listarAlumnos(argThat(alumno ->
-        alumno.getNombre().equals("JJ") &&
-        alumno.getApellidos().equals("Z") &&
-        alumno.getEdad() == 19));
+        verify(vistaInterfaz).listarAlumnos(argThat(alumnos ->
+        alumnos.size() == 1 &&
+        alumnos.get(0).getNombre().equals("JJ") &&
+        alumnos.get(0).getApellidos().equals("Z") &&
+        alumnos.get(0).getEdad() == 19));
     }
 
 }

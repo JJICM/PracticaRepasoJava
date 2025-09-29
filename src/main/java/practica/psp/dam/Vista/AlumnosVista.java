@@ -1,5 +1,6 @@
 package practica.psp.dam.Vista;
 
+import java.util.List;
 import java.util.Scanner;
 
 import practica.psp.dam.Modelo.Alumnos;
@@ -19,11 +20,11 @@ public class AlumnosVista implements VistaInterfaz{
             %d - Listar alumno.
             %d - Salir.
             """.formatted(OPCION_CREAR_ALUMNO, OPCION_LISTAR_ALUMNO, OPCION_SALIR);
-
-        System.out.println(opciones);    //Manejar el rango a 1-3 con while
+        System.out.println(opciones);
 
         sc = new Scanner(System.in);
-        int opcion = Integer.parseInt(sc.nextLine());   //Excepción NumberFormatException
+        int opcion = 0;
+        opcion = Integer.parseInt(sc.nextLine());
 
         return opcion;
     }
@@ -51,13 +52,15 @@ public class AlumnosVista implements VistaInterfaz{
     }
 
     @Override
-    public void listarAlumnos(Alumnos alumno) {
-        String mostrarDatos = """
+    public void listarAlumnos(List<Alumnos> alumnos) {
+        for (Alumnos alumno : alumnos) {
+            String mostrarDatos = """
             ALUMNO
             Nombre: %s
             Apellidos: %s
             Edad: %s
             """.formatted(alumno.getNombre(), alumno.getApellidos(), Integer.toString(alumno.getEdad()));
-        System.out.println(mostrarDatos);
+            System.out.println(mostrarDatos);
+        }
     }
 }
