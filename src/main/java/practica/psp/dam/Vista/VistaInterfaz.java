@@ -5,5 +5,5 @@ import practica.psp.dam.Modelo.Alumnos;
 public interface VistaInterfaz {
     int opcionMenu();
     Alumnos crearAlumnos();
-    void listarAlumnos(String[] datos);
+    void listarAlumnos(Alumnos alumno);
 }

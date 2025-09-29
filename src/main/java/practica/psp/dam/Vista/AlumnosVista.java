@@ -51,13 +51,13 @@ public class AlumnosVista implements VistaInterfaz{
     }
 
     @Override
-    public void listarAlumnos(String[] datos) {     //Cambiar a void listarAlumnos(Alumnos alumno) para usar los getters de Alumno
+    public void listarAlumnos(Alumnos alumno) {
         String mostrarDatos = """
             ALUMNO
             Nombre: %s
             Apellidos: %s
             Edad: %s
-            """.formatted(datos[0], datos[1], datos[2]);    //Mantenimiento del proyecto, variables
+            """.formatted(alumno.getNombre(), alumno.getApellidos(), Integer.toString(alumno.getEdad()));
         System.out.println(mostrarDatos);
     }
 }

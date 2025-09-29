@@ -23,8 +23,7 @@ public class AlumnosControlador {
                     break;
                 case AlumnosVista.OPCION_LISTAR_ALUMNO:
                     for (Alumnos alumno : modeloInterfaz.listarAlumnos()) {
-                        String[] datosAlumno = {alumno.getNombre(), alumno.getApellidos(), Integer.toString(alumno.getEdad())};
-                        vistaInterfaz.listarAlumnos(datosAlumno);
+                        vistaInterfaz.listarAlumnos(alumno);
                     }
                     break;
                 case AlumnosVista.OPCION_SALIR:
