@@ -19,8 +19,7 @@ public class AlumnosControlador {
         while (!salir) {
             switch (vistaInterfaz.opcionMenu()) {
                 case AlumnosVista.OPCION_CREAR_ALUMNO:
-                    String[] datos = vistaInterfaz.crearAlumnos();
-                    modeloInterfaz.crearAlumnos(new Alumnos(datos[0], datos[1], Integer.parseInt(datos[2])));
+                    modeloInterfaz.crearAlumnos(vistaInterfaz.crearAlumnos());
                     break;
                 case AlumnosVista.OPCION_LISTAR_ALUMNO:
                     for (Alumnos alumno : modeloInterfaz.listarAlumnos()) {

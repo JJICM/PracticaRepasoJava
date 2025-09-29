@@ -1,7 +1,9 @@
 package practica.psp.dam.Vista;
 
+import practica.psp.dam.Modelo.Alumnos;
+
 public interface VistaInterfaz {
     int opcionMenu();
-    String[] crearAlumnos();
+    Alumnos crearAlumnos();
     void listarAlumnos(String[] datos);
 }

@@ -2,13 +2,13 @@ package practica.psp.dam.Vista;
 
 import java.util.Scanner;
 
+import practica.psp.dam.Modelo.Alumnos;
+
 public class AlumnosVista implements VistaInterfaz{
     
     public static final int OPCION_CREAR_ALUMNO = 1;
     public static final int OPCION_LISTAR_ALUMNO = 2;
     public static final int OPCION_SALIR = 3;
-
-    private static final int ATRIBUTOS_ALUMNO = 3;
 
     private Scanner sc;
 
@@ -29,18 +29,25 @@ public class AlumnosVista implements VistaInterfaz{
     }
 
     @Override
-    public String[] crearAlumnos() {    //Cambiar a Alumno crearAlumnos() para que retorne un objeto alumno directamente
-        String[] datosAlumno = new String[ATRIBUTOS_ALUMNO];
-
+    public Alumnos crearAlumnos() {
         sc = new Scanner(System.in);
         System.out.println("Nombre del alumno: ");
-        datosAlumno[0] = sc.nextLine();     //Mantenimiento del proyecto, variables
+        String nombre = sc.nextLine();
         System.out.println("Apellidos del alumno: ");
-        datosAlumno[1] = sc.nextLine();
-        System.out.println("Edad del alumno: ");    //Manejar la edad, debe ser un entero positivo
-        datosAlumno[2] = sc.nextLine();
-
-        return datosAlumno;
+        String apellidos = sc.nextLine();
+        int edad = -1;
+        while (edad < 0) {
+            try {
+            System.out.println("Edad del alumno: ");
+            edad = Integer.parseInt(sc.nextLine());
+            if (edad < 0) {
+                System.out.println("La edad debe ser positivo");
+            }
+            } catch (NumberFormatException nfe) {
+                System.out.println("La edad debe ser un número");
+            }
+        }
+        return new Alumnos(nombre, apellidos, edad);
     }
 
     @Override

@@ -32,7 +32,7 @@ public class AlumnosControladorTest {
     @Test
     public void crearAlumnosTest() {
         Mockito.when(vistaInterfaz.opcionMenu()).thenReturn(AlumnosVista.OPCION_CREAR_ALUMNO, AlumnosVista.OPCION_SALIR);
-        Mockito.when(vistaInterfaz.crearAlumnos()).thenReturn(new String[]{"JJ", "Z", "19"});
+        Mockito.when(vistaInterfaz.crearAlumnos()).thenReturn(new Alumnos("JJ", "Z", 19));
         alumnosControlador.start();
         verify(modeloInterfaz).crearAlumnos(argThat(alumno ->
         alumno.getNombre().equals("JJ") &&
